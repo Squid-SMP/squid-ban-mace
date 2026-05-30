@@ -34,7 +34,8 @@ import static org.orsa.squidBanMace.SquidBanMace.SERVER;
 import static org.orsa.squidStaffCommands.SquidStaffCommands.MOD_PERM;
 import org.orsa.squidBanMace.factory.ItemFactory;
 import org.orsa.squidBanMace.factory.ManufacturedItem;
-import xyz.nucleoid.packettweaker.PacketContext;
+import net.fabricmc.fabric.api.networking.v1.context.PacketContext;
+import net.minecraft.core.HolderLookup;
 
 import java.util.List;
 
@@ -122,7 +123,7 @@ public class BanMace extends MaceItem implements PolymerItem, ManufacturedItem<B
         setMode(stack, nextMode);
         serverPlayer.inventoryMenu.broadcastChanges();
 
-        player.displayClientMessage(Component.literal("[" + nextMode.displayName() + "]").withStyle(ChatFormatting.GOLD), true);
+        player.sendOverlayMessage(Component.literal("[" + nextMode.displayName() + "]").withStyle(ChatFormatting.GOLD));
         SquidBanMace.playSoundFor(serverPlayer, SoundEvents.NOTE_BLOCK_PLING.value(), 0.5f, 2.0f);
 
         return InteractionResult.SUCCESS_SERVER;
@@ -200,7 +201,7 @@ public class BanMace extends MaceItem implements PolymerItem, ManufacturedItem<B
     }
 
     @Override
-    public void modifyBasePolymerItemStack(ItemStack serverStack, ItemStack clientStack, PacketContext context) {
+    public void modifyBasePolymerItemStack(ItemStack serverStack, ItemStack clientStack, PacketContext context, HolderLookup.Provider lookup) {
         var enchantmentRegistry = SERVER.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
         var windBurst = enchantmentRegistry.getOrThrow(Enchantments.WIND_BURST);
         var mutable = new ItemEnchantments.Mutable(ItemEnchantments.EMPTY);

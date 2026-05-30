@@ -1,6 +1,6 @@
 package org.orsa.squidBanMace;
 
-import eu.pb4.polymer.core.api.item.PolymerItemGroupUtils;
+import eu.pb4.polymer.core.api.item.PolymerCreativeModeTabUtils;
 import eu.pb4.polymer.resourcepack.api.PolymerResourcePackUtils;
 import com.mojang.brigadier.CommandDispatcher;
 import net.fabricmc.api.ModInitializer;
@@ -45,12 +45,12 @@ public class SquidBanMace implements ModInitializer {
     }
 
     private static void registerItemGroup() {
-        var builder = PolymerItemGroupUtils.builder();
+        var builder = PolymerCreativeModeTabUtils.builder();
         builder.title(Component.translatable("itemgroup.squid_ban_mace"));
         builder.icon(() -> new ItemStack(BAN_MACE));
         builder.displayItems(SquidBanMace::populateGroup);
         var itemGroup = builder.build();
-        PolymerItemGroupUtils.registerPolymerItemGroup(id("main"), itemGroup);
+        PolymerCreativeModeTabUtils.registerPolymerCreativeModeTab(id("main"), itemGroup);
     }
 
     private static void registerCommands(CommandDispatcher<CommandSourceStack> dispatcher, CommandBuildContext context, Commands.CommandSelection selection) {
@@ -76,7 +76,7 @@ public class SquidBanMace implements ModInitializer {
                 player,
                 volume,
                 pitch,
-                player.level().random.nextLong()
+                player.level().getRandom().nextLong()
         );
         player.connection.send(packet);
     }

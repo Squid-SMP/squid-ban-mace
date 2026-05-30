@@ -6,7 +6,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.orsa.squidBanMace.factory.ItemFactory;
 import org.orsa.squidBanMace.factory.ManufacturedItem;
-import xyz.nucleoid.packettweaker.PacketContext;
+import net.fabricmc.fabric.api.networking.v1.context.PacketContext;
 
 public class QuitItem extends Item implements PolymerItem, ManufacturedItem<QuitItem> {
     Item polymerItem;
