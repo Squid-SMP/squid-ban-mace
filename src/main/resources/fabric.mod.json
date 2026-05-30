@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "squid_ban_mace",
+  "version": "${version}",
+  "name": "Squid Ban Mace",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/squid_ban_mace/icon.png",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "org.orsa.squidBanMace.SquidBanMace"
+    ]
+  },
+  "mixins": [
+    "squid_ban_mace.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}",
+    "squid-staff-commands": "*"
+  }
+}
