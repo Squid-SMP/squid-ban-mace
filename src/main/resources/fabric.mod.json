@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "squid_ban_mace",
+  "id": "squid-ban-mace",
   "version": "${version}",
   "name": "Squid Ban Mace",
   "description": "",
@@ -15,7 +15,7 @@
     ]
   },
   "mixins": [
-    "squid_ban_mace.mixins.json"
+    "squid-ban-mace.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${loader_version}",
